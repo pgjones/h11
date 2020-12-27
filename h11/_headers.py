@@ -1,4 +1,5 @@
 import re
+from collections.abc import Sequence
 
 from ._abnf import field_name, field_value
 from ._util import bytesify, LocalProtocolError, validate
@@ -62,7 +63,7 @@ _field_name_re = re.compile(field_name.encode("ascii"))
 _field_value_re = re.compile(field_value.encode("ascii"))
 
 
-class Headers:
+class Headers(Sequence):
     """
     A list-like interface that allows iterating over headers as byte-pairs
     of (lowercased-name, value).
